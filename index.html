@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0c0d14" />
+  <title>EMBERHALL // Dungeon Crawler</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root{--ink:#fff8e8;--muted:#6f625f;--bg:#f5e2b8;--panel:#fff1cf;--line:#d7b879;--gold:#e69a32;--ember:#ef674e;--teal:#3eb7a7;--purple:#806be3}body{background-image:radial-gradient(ellipse at 12% 0%,#fff7dd 0%,transparent 45%),radial-gradient(ellipse at 100% 100%,#a9e0d1 0%,transparent 36%)}.screen-start,.screen-over{color:#493a37}.screen-start .lede,.screen-over .lede{color:#6f625f}.rules-card,.run-summary{background:linear-gradient(120deg,rgba(255,247,222,.96),rgba(255,232,185,.92));box-shadow:0 18px 80px rgba(126,77,32,.15)}
+    :root{--ink:#fff8e8;--muted:#6f625f;--bg:#f5e2b8;--panel:#fff1cf;--line:#d7b879;--gold:#e69a32;--ember:#ef674e;--teal:#3eb7a7;--purple:#806be3}body{background-image:radial-gradient(ellipse at 12% 0%,#fff7dd 0%,transparent 45%),radial-gradient(ellipse at 100% 100%,#a9e0d1 0%,transparent 36%)}.screen-start,.screen-over{color:#493a37}.screen-start .lede,.screen-over .lede{color:#6f625f}.rules-card,.run-summary{background:linear-gradient(120deg,rgba(255,247,222,.96),rgba(255,232,185,.92));box-shadow:0 18px 80px rgba(126,77,32,.15)}
+    .game-screen{background:linear-gradient(145deg,#fff1c9 0%,#f4d993 52%,#d4f0dc 100%)}.game-header{background:#fff5d9;border-bottom:3px solid #e69a32;box-shadow:0 4px 0 rgba(128,107,227,.16)}.left-rail{border-right:3px dashed #d7b879}.character-card,.stat-block,.currency,.objective{background:rgba(255,249,226,.7);border-radius:12px;padding:10px}.character-card{border:2px solid #e69a32}.avatar{border:3px solid #ef674e;border-radius:10px;background:#ffd37e}.stat-block{border:2px solid #d7b879}.stat-label{color:#5f504c}.bar{height:12px;border:2px solid #4b3e4e;border-radius:8px;background:#e8cda2;overflow:hidden;margin-top:9px}.bar i{border-radius:5px}.hp-bar i{background:linear-gradient(90deg,#f04e55,#ff9d4b);box-shadow:0 0 10px #ff7b55}.ward-bar i{background:linear-gradient(90deg,#4ec8c0,#8d7df0);box-shadow:0 0 10px #61c0b1}.canvas-wrap{border:4px solid #4b3e4e;border-radius:16px;background:#17233a;box-shadow:8px 8px 0 rgba(128,107,227,.22),0 18px 40px rgba(91,65,38,.22);overflow:hidden}.floor-banner{color:#8050c2;background:#fff1cf;padding:9px 12px;border-radius:10px}.action{border:3px solid #6f5aa9;border-radius:14px;background:#fff1cf;box-shadow:0 5px 0 #b88cbd}.action-attack{border-color:#ef674e}.action-special{border-color:#806be3}.action-potion{border-color:#3eb7a7}.joystick{border:3px solid #806be3;box-shadow:0 5px 0 #b88cbd}.screen-start .primary-btn,.screen-over .primary-btn{border-radius:12px}.run-summary,.rules-card{border-radius:16px}
+    .modal-note{font-size:12px;color:#949198;line-height:1.5;margin:14px 0 0}.shop-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}.shop-item{background:#20212d;border:1px solid #343545;text-align:left;padding:16px;display:flex;flex-direction:column;gap:6px}.shop-item b{font-size:11px}.shop-item small{color:#949198;font:8px 'DM Mono'}.shop-item strong{color:#e6b85c;font:11px 'DM Mono';margin-top:5px}.shop-item:hover{border-color:#e6b85c}.shop-continue{margin-top:20px;max-width:none}
+    .screen-start,.screen-over{isolation:isolate}.screen-start::before,.screen-over::before{content:"";position:absolute;inset:18px;border:1px solid rgba(230,184,92,.22);box-shadow:inset 0 0 70px rgba(228,94,63,.08),0 0 30px rgba(97,192,177,.05);pointer-events:none;z-index:-1}.screen-start::after,.screen-over::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0,rgba(255,255,255,.025) 1px,transparent 1px,transparent 5px);mix-blend-mode:screen;opacity:.25;pointer-events:none;z-index:2}.screen-start .brand-lockup,.screen-start .hero-copy,.screen-start .rules-card,.screen-start .primary-btn,.screen-start .tip,.screen-over>*{position:relative;z-index:3}.screen-start .hero-copy h1,.screen-over h2{text-shadow:4px 4px 0 rgba(228,94,63,.16)}.screen-start .rules-card,.screen-over .run-summary{border-color:rgba(230,184,92,.45);box-shadow:6px 6px 0 rgba(228,94,63,.09)}.screen-start .primary-btn,.screen-over .primary-btn{text-transform:uppercase;box-shadow:5px 5px 0 #7e3b32;border:1px solid #f5ce79}.screen-start .primary-btn:active,.screen-over .primary-btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 #7e3b32}.screen-over{background-image:radial-gradient(ellipse at 80% 15%,rgba(228,94,63,.14),transparent 40%)}.screen-over .skull{filter:drop-shadow(5px 5px 0 rgba(228,94,63,.3))}
+    .action-potion span{color:#61c0b1}.action-potion{border-color:#39766f}@media(max-width:760px){.controls{gap:6px}.action-cluster{gap:4px}.action{width:54px;height:68px}.action span{font-size:17px}.action b{font-size:7px}.action small{font-size:6px}}
+    @media(max-width:520px){.game-header{padding:0 10px}.mini-brand{font-size:9px}.run-meta{font-size:7px}.game-layout{padding:10px 8px}.left-rail{gap:8px}.objective{font-size:11px}.objective small{font-size:8px}.controls{align-items:center}.joystick{width:90px;height:90px}.joystick .stick{left:29px;top:29px;width:34px;height:34px}.joy-n,.joy-s{left:41px}.joy-w{left:10px}.joy-e{right:10px}.action-cluster{min-width:0;flex:1}.action{width:clamp(42px,12vw,54px);height:62px;padding:3px}.action span{font-size:15px}.action b{font-size:6px;letter-spacing:0}.action small{font-size:5px}.floor-banner b{display:none}}
+    .run-summary{flex-wrap:wrap;gap:18px}.run-comparison{width:100%;border:1px solid var(--gold);background:rgba(230,184,92,.08);padding:14px 16px;display:flex;align-items:center;gap:12px}.run-comparison span{font:9px 'DM Mono';color:var(--gold);letter-spacing:.12em}.run-comparison b{font:13px 'DM Mono';color:var(--ink)}.run-comparison small{margin-left:auto;color:var(--muted);font:9px 'DM Mono'}.run-comparison.new-best{border-color:var(--teal);background:rgba(97,192,177,.1)}.run-comparison.new-best span{color:var(--teal)}
+  </style>
+</head>
+<body>
+  <main class="app-shell">
+    <section id="start-screen" class="screen screen-start">
+      <div class="brand-lockup"><span class="brand-mark">✦</span><span>EMBERHALL</span><small>THE INFINITE BELOW</small></div>
+      <div class="hero-copy">
+        <p class="eyebrow">HOW TO PLAY</p>
+        <h1>Explore.<br /><em>Fight.</em><br />Get stronger.</h1>
+        <p class="lede">Use the joystick to move, then use your weapon, spells, block, and potion buttons to stay alive.</p>
+      </div>
+      <div class="rules-card">
+        <div class="card-heading"><span class="icon">◈</span><span>RULES &amp; GOALS</span><span class="rule-line"></span><span class="floor-stamp">READY UP</span></div>
+        <ul class="rules-list">
+          <li><span>01</span><b>MOVE</b><small>Use the joystick to explore the dungeon.</small></li>
+          <li><span>02</span><b>FIGHT</b><small>Attack enemies, block hits, and cast spells.</small></li>
+          <li><span>03</span><b>LOOT</b><small>Open chests, find stairs, and beat bosses.</small></li>
+        </ul>
+      </div>
+      <button id="start-btn" class="primary-btn"><span>BEGIN THE DESCENT</span><b>→</b></button>
+      <p class="tip"><span>☼</span> Best played with sound on &nbsp;·&nbsp; autosaves at every floor</p>
+    </section>
+
+    <section id="game-screen" class="screen screen-game hidden">
+      <header class="game-header">
+        <div class="mini-brand"><span>✦</span> EMBERHALL</div>
+        <div class="run-meta"><span>RUN 07</span><i></i><span id="floor-label">FLOOR 01</span></div>
+        <button id="pause-btn" class="icon-btn" aria-label="Pause">Ⅱ</button>
+      </header>
+      <div class="game-layout">
+        <aside class="left-rail">
+          <div class="character-card">
+            <div class="avatar">⚔</div><div><b>ASHWALKER</b><span>LVL <strong id="level-label">01</strong></span></div>
+          </div>
+          <div class="stat-block"><div class="stat-label"><span>VITALITY</span><b id="hp-label">100 / 100</b></div><div class="bar hp-bar"><i id="hp-fill"></i></div></div>
+          <div class="stat-block"><div class="stat-label"><span>WARD</span><b id="ward-label">60 / 60</b></div><div class="bar ward-bar"><i id="ward-fill"></i></div></div>
+          <div class="currency"><span>◉</span><b id="gold-label">124</b><small>GOLD</small></div>
+          <div class="objective"><span class="eyebrow">CURRENT OBJECTIVE</span><b id="objective-label">Find the stairway</b><small id="objective-detail">0 / 3 mummies banished</small></div>
+          <button id="backpack-btn" class="backpack-btn"><span>▣</span><span>BACKPACK</span><b id="item-count">4</b></button>
+        </aside>
+        <section class="play-area">
+          <div class="floor-banner"><span>◈</span> THE SUNKEN ARCHIVES <i></i><b id="room-label">CHAMBER 01</b></div>
+          <div class="canvas-wrap"><canvas id="dungeon" width="900" height="560" aria-label="Dungeon game area"></canvas><div id="toast" class="toast"></div></div>
+          <div class="controls">
+            <div class="joystick" id="joystick" aria-label="Movement joystick"><div class="stick"></div><span class="joy-n">▲</span><span class="joy-s">▼</span><span class="joy-w">‹</span><span class="joy-e">›</span></div>
+            <div class="action-cluster"><button class="action action-attack" id="attack-btn"><span>⚔</span><b id="weapon-label">SWORD</b></button><button class="action" id="block-btn"><span>◒</span><b>BLOCK</b></button><button class="action action-special" id="spell1-btn"><span>✧</span><b id="spell1-label">FIRE</b><small>SPELL 1</small></button><button class="action action-special" id="spell2-btn"><span>✧</span><b id="spell2-label">ICE</b><small>SPELL 2</small></button><button class="action action-potion" id="potion-btn"><span>✚</span><b id="potion-label">POTION</b><small id="potion-uses">3 USES</small></button></div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="gameover-screen" class="screen screen-over hidden">
+      <div class="brand-lockup"><span class="brand-mark danger">✦</span><span>EMBERHALL</span><small>THE DESCENT ENDS HERE</small></div>
+      <div class="skull">☠</div><p class="eyebrow">THE DUNGEON CLAIMS ANOTHER</p><h2>Run ended.</h2><p class="lede">The dark is patient. Your next run can be stronger.</p>
+      <div class="run-summary"><div><span>FLOOR REACHED</span><b id="final-floor">01</b></div><div><span>GOLD BANKED</span><b id="final-gold">124</b></div><div><span>MUMMIES BANISHED</span><b id="final-kills">0</b></div><div><span>TIME PLAYED</span><b id="final-time">0:00</b></div></div>
+      <div id="run-comparison" class="run-comparison"><span>BEST RUN</span><b id="best-summary">FLOOR 01 · 0:00</b><small id="best-detail">Your best run is saved on this device.</small></div>
+      <button id="again-btn" class="primary-btn"><span>PLAY AGAIN</span><b>↻</b></button><p class="tip">Your floor save preserved your gear.</p>
+    </section>
+
+    <div id="backpack-modal" class="modal hidden"><div class="modal-card"><div class="modal-head"><div><span class="eyebrow">ASHWALKER'S KIT · 4 SLOTS</span><h3>Backpack</h3></div><button id="close-backpack" class="close-btn">×</button></div><p class="modal-note">Tap a slot button to cycle through the items you own.</p><div id="inventory-grid" class="inventory-grid"></div></div></div>
+    <div id="shop-modal" class="modal hidden"><div class="modal-card"><div class="modal-head"><div><span class="eyebrow">BOSS DEFEATED · FLOOR SAVE SECURED</span><h3>Wayfarer's Shop</h3></div></div><p class="modal-note">Spend your gold before the next descent.</p><div class="shop-grid"><button class="shop-item" data-buy="ward"><b>WARD CRYSTAL</b><small>+20 maximum Ward</small><strong>60 ◉</strong></button><button class="shop-item" data-buy="health"><b>VITALITY TONIC</b><small>+25 maximum health</small><strong>70 ◉</strong></button><button class="shop-item" data-buy="weapon"><b>NEW WEAPON</b><small>Adds the next sword to your kit</small><strong>90 ◉</strong></button><button class="shop-item" data-buy="spell"><b>ARCANE SCROLL</b><small>Unlocks a new elemental spell</small><strong>90 ◉</strong></button></div><button id="continue-btn" class="primary-btn shop-continue"><span>CONTINUE DESCENT</span><b>→</b></button></div></div>
+    <div id="pause-modal" class="modal hidden"><div class="modal-card pause-card"><span class="eyebrow">RUN PAUSED</span><h3>The torch waits.</h3><button id="resume-btn" class="primary-btn"><span>RESUME RUN</span><b>→</b></button></div></div>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
